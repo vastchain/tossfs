@@ -21,7 +21,7 @@
 /src/.deps/
 /src/Makefile
 /src/Makefile.in
-/src/s3fs
+/src/tossfs
 /src/test_*
 /test/.deps/
 /test/Makefile
