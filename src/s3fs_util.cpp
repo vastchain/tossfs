@@ -866,15 +866,15 @@ void show_help (void)
   show_usage();
   printf(
     "\n"
-    "Mount an Aliyun OSS bucket as a file system.\n"
+    "Mount an VastChain Trusted OSS bucket as a file system.\n"
     "\n"
-    "   General forms for ossfs and FUSE/mount options:\n"
+    "   General forms for tossfs and FUSE/mount options:\n"
     "      -o opt[,opt...]\n"
     "      -o opt [-o opt] ...\n"
     "\n"
     "ossfs Options:\n"
     "\n"
-    "   Most ossfs options are given in the form where \"opt\" is:\n"
+    "   Most tossfs options are given in the form where \"opt\" is:\n"
     "\n"
     "             <option_name>=<option_value>\n"
     "\n"
@@ -1118,7 +1118,7 @@ void show_help (void)
     "                   disable multi-threaded operation\n"
     "\n"
     "\n"
-    "ossfs home page: <https://github.com/aliyun/ossfs>\n"
+    "tossfs home page: <https://github.com/vastchain/tossfs>\n"
   );
   return;
 }

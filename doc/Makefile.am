@@ -18,5 +18,5 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 ######################################################################
-dist_man1_MANS = man/ossfs.1
+dist_man1_MANS = man/tossfs.1
 
