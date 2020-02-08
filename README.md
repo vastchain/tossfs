@@ -1,25 +1,23 @@
-# OSSFS
+# Vastchain TOSSFS
 
 [![Version](https://badge.fury.io/gh/aliyun%2Fossfs.svg)][releases]
 [![Build Status](https://travis-ci.org/aliyun/ossfs.svg?branch=master)](https://travis-ci.org/aliyun/ossfs?branch=master)
 
-### [README of Chinese](https://github.com/aliyun/ossfs/blob/master/README-CN.md)
-
 ## Introduction
 
-The OSSFS enables you to mount Alibaba Cloud OSS buckets to a local file in Linux/Mac OS X systems. 
+The TOSSFS enables you to mount Vastchain Trusted OSS buckets to a local file in Linux/Mac OS X systems. 
 In the system, you can conveniently operate on objects in OSS while using the local file system to maintain data sharing. 
 
 ## Features
 
-The OSSFS is built based on S3FS and has all the features of S3FS. Main features:
+The TOSSFS is built based on OSSFS and has all the features of OSSFS. Main features:
 
 * Support a majority of the POSIX file system features, including file read/write, directory, link operation, permission, 
   uid/gid, and extended attributes). 
 * Support upload of large files through the OSS multipart feature. 
 * Support MD5 verification to ensure data integrity. 
 
-## Install OSSFS
+## Install TOSSFS
 
 ### Precompiled installer
 
@@ -35,7 +33,7 @@ Please select the corresponding installer on the [Version Releases Page][Release
 ```
 sudo apt-get update
 sudo apt-get install gdebi-core
-sudo gdebi your_ossfs_package
+sudo gdebi your_tossfs_package
 ```
 
 - For CentOS6.5 or above, the installation command is: 
@@ -177,21 +175,14 @@ Compared with local file systems, OSSFS has some restrictions in provided functi
   - Release a version on the [Release Page][releases]. 
   - Upload the generated installer package to the corresponding Release directory. 
 
-## FAQs
-
-[FAQ](https://github.com/aliyun/ossfs/wiki/FAQ-EN)
-
 ### Related
 
-* [OSSFS Wiki](https://github.com/aliyun/ossfs/wiki)
 * [S3FS](https://github.com/s3fs-fuse/s3fs-fuse)- Mount the s3 bucket to the local file system through the fuse interface. 
+* [OSSFS](https://github.com/aliyun/ossfs/)
 
 ## Contact us
 
-* [Alibaba Cloud OSS official website](http://oss.aliyun.com/)
-* [Alibaba Cloud OSS official forum](http://bbs.aliyun.com/thread/211.html)
-* [Alibaba Cloud OSS official documentation center](http://www.aliyun.com/product/oss#Docs)
-* Alibaba Cloud official technical support: [Submit a ticket](https://workorder.console.aliyun.com/#/ticket/createIndex)
+* [Vastchain official website](https://www.vastchain.cn/)
 
 ## License
 
@@ -201,12 +192,4 @@ Copyright (C) 2015 Haoran Yang <yangzhuodog1982@gmail.com>
 
 Licensed under the GNU GPL version 2
 
-
-[releases]: https://github.com/aliyun/ossfs/releases
-[updatedb]: http://linux.die.net/man/8/updatedb
-[faq-updatedb]: https://github.com/aliyun/ossfs/wiki/FAQ
-[ecryptfs]: http://ecryptfs.org/
-[xattr]: http://man7.org/linux/man-pages/man7/xattr.7.html
-[supervisor]: http://supervisord.org/
-[faq-supervisor]: https://github.com/aliyun/ossfs/wiki/FAQ#18
 
