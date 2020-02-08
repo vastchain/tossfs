@@ -1,8 +1,5 @@
 # Vastchain TOSSFS
 
-[![Version](https://badge.fury.io/gh/aliyun%2Fossfs.svg)][releases]
-[![Build Status](https://travis-ci.org/aliyun/ossfs.svg?branch=master)](https://travis-ci.org/aliyun/ossfs?branch=master)
-
 ## Introduction
 
 The TOSSFS enables you to mount Vastchain Trusted OSS buckets to a local file in Linux/Mac OS X systems. 
@@ -69,8 +66,8 @@ sudo yum install automake gcc-c++ git libcurl-devel libxml2-devel \
 Then you can download the source code from GitHub and compile the code for installing the tool: 
 
 ```
-git clone https://github.com/aliyun/ossfs.git
-cd ossfs
+git clone https://github.com/vastchain/tossfs.git
+cd tossfs
 ./autogen.sh
 ./configure
 make
@@ -87,37 +84,36 @@ echo my-bucket:my-access-key-id:my-access-key-secret > /etc/passwd-ossfs
 chmod 640 /etc/passwd-ossfs
 ```
 
-Mount the OSS bucket to the specified directory. 
+Mount the TOSS bucket to the specified directory. 
 
 ```
-ossfs my-bucket my-mount-point -ourl=my-oss-endpoint
+tossfs my-bucket my-mount-point -ourl=my-toss-endpoint
 ```
 ### Example
 
-Mount the 'my-bucket' bucket to the '/tmp/ossfs' directory and the AccessKeyId is 'faint', 
-the AccessKeySecret is '123', and the OSS endpoint is 'http://oss-cn-hangzhou.aliyuncs.com'.
+Mount the 'my-bucket' bucket to the '/tmp/tossfs' directory and the AccessKeyId is 'faint', 
+the AccessKeySecret is '123', and the TOSS endpoint is 'hangzhou1.toss.vastchan.cn'.
 
 ```
-echo my-bucket:faint:123 > /etc/passwd-ossfs
-chmod 640 /etc/passwd-ossfs
-mkdir /tmp/ossfs
-ossfs my-bucket /tmp/ossfs -ourl=http://oss-cn-hangzhou.aliyuncs.com
+echo my-bucket:faint:123 > /etc/passwd-tossfs
+chmod 640 /etc/passwd-tossfs
+mkdir /tmp/tossfs
+tossfs my-bucket /tmp/ossfs -ourl=http://hangzhou1.toss.vastchan.cn
 ```
 
 Unmount the bucket:
 
 ```bash
-umount /tmp/ossfs # root user
-fusermount -u /tmp/ossfs # non-root user
+umount /tmp/tossfs # root user
+fusermount -u /tmp/tossfs # non-root user
 ```
 
 ### Common settings
 
-- You can use 'ossfs --version' to view the current version and 'ossfs -h' to view available parameters. 
-- If you are using OSSFS on an Alibaba Cloud ECS instance, you can use the intranet domain name to **save traffic charges** and 
+- You can use 'tossfs --version' to view the current version and 'tossfs -h' to view available parameters. 
   **improve speed**: 
 
-        ossfs my-bucket /tmp/ossfs -ourl=http://oss-cn-hangzhou-internal.aliyuncs.com
+        tossfs my-bucket /tmp/tossfs -ourl=http://hangzhou1.toss.vastchan.cn
 
 - In a Linux system, [updatedb][updatedb] will scan the file system on a regular basis. If you do not want the 
   OSSFS-mounted directory to be scanned, refer to [FAQ][FAQ-updatedb] to configure skipping the mounted directory. 
@@ -148,19 +144,20 @@ Do not panic in case of errors. Troubleshoot the problem following the steps bel
 
         grep 's3fs' /var/log/syslog
         grep 'ossfs' /var/log/syslog
+        grep 'tossfs' /var/log/syslog
 
-3. Retry OSSFS mounting and open the debug log: 
+3. Retry TOSSFS mounting and open the debug log: 
 
-        ossfs ... -o dbglevel=debug -f -d > /tmp/fs.log 2>&1
+        tossfs ... -o dbglevel=debug -f -d > /tmp/fs.log 2>&1
 
     Repeat the operation and save the '/tmp/fs.log' to check or send the file to me. 
 
 ## Restrictions
 
-Compared with local file systems, OSSFS has some restrictions in provided functionality and performance. Specifically speaking: 
+Compared with local file systems, TOSSFS has some restrictions in provided functionality and performance. Specifically speaking: 
 
 * Random or append writes to files may lead to rewrite of the entire file.
-* Metadata operations, such as list directory perform poorly because of the remote access to the OSS server.
+* Metadata operations, such as list directory perform poorly because of the remote access to the TOSS server.
 * The rename operations on files/folders are not atomic.
 * When multiple clients are mounted to the same OSS bucket, you have to coordinate actions of various clients on your own. For example, keep multiple clients from writing data to the same file.
 * Hard link is not supported.
