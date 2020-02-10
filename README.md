@@ -36,13 +36,13 @@ sudo gdebi your_tossfs_package
 - For CentOS6.5 or above, the installation command is: 
 
 ```
-sudo yum localinstall your_ossfs_package
+sudo yum localinstall your_tossfs_package
 ```
 
 - For CentOS5, the installation command is: 
 
 ```
-sudo yum localinstall your_ossfs_package --nogpgcheck
+sudo yum localinstall your_tossfs_package --nogpgcheck
 ```
 
 ### Install by source code
@@ -74,14 +74,14 @@ make
 sudo make install
 ```
 
-## Run OSSFS
+## Run TOSSFS
 
-Set the bucket name, access key/ID information and save the information to the "/etc/passwd-ossfs" object. 
+Set the bucket name, access key/ID information and save the information to the "/etc/passwd-tossfs" object. 
 Note: The ACL of this object must be set correctly, and 640 is recommended. 600 is recommended if the password file is not the default path.
 
 ```
-echo my-bucket:my-access-key-id:my-access-key-secret > /etc/passwd-ossfs
-chmod 640 /etc/passwd-ossfs
+echo my-bucket:my-access-key-id:my-access-key-secret > /etc/passwd-tossfs
+chmod 640 /etc/passwd-tossfs
 ```
 
 Mount the TOSS bucket to the specified directory. 
@@ -130,8 +130,8 @@ fusermount -u /tmp/tossfs # non-root user
 
 ### Advanced settings
 
-- You can add the '-f -d' parameters to run the OSSFS in the foreground and output the debug log. 
-- You can use the '-o kernel_cache' parameter to enable the OSSFS to use the page cache of the file system. 
+- You can add the '-f -d' parameters to run the TOSSFS in the foreground and output the debug log. 
+- You can use the '-o kernel_cache' parameter to enable the TOSSFS to use the page cache of the file system. 
   If you have multiple servers mounted to the same bucket and require strong consistency, **do not** use this 
   option. 
 
@@ -163,14 +163,6 @@ Compared with local file systems, TOSSFS has some restrictions in provided funct
 * Hard link is not supported.
 * The tool is not suitable for scenarios with highly concurrent reads/writes as it will increase the system load. 
 
-## Get involved in development
-
-0. For the development procedure, refer to: https://github.com/rockuw/oss-sdk-status#development-oss-members-only. 
-1. After the code is submitted, ensure the travis CI is in the PASS status. 
-2. Every time a new version is released: 
-  - Run 'scripts/build-pkg.py' to generate the corresponding installer package. 
-  - Release a version on the [Release Page][releases]. 
-  - Upload the generated installer package to the corresponding Release directory. 
 
 ### Related
 
